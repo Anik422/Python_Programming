@@ -1,29 +1,36 @@
-#binary search function
-def binary_search(li, n, x):
-    first = 0
-    lest = n-1
-    #while loop condition setup
-    while first <= lest:
-        middle = (first + lest) // 2
-        if li[middle] == x:
-            return middle
-        if li[middle] < x:
-            first = middle+1    #first new value defiant
+def binary_search(array_num, size_of_array, find_number):
+    index_first = 0
+    index_last = size_of_array - 1
+    while index_first <= index_last:
+        index_mid = (index_first + index_last) // 2
+        if array_num[index_mid] == find_number:
+            return index_mid
+        if array_num[index_mid] < find_number:
+            index_first = index_mid + 1
         else:
-            lest = middle-1     #lest new value defiant
-    return -1 #defualt return value
-# input array size
-num = int(input("Enter list elements number :"))
-list1 = [] #defianed array
-# input array element
-for i in range(0,num):
-    list1.append(int(input(f"Enter {i} index input number :")))
-# input search element
-search_element_value = int(input("Enter search value : "))
-# function call
-result = binary_search(list1,len(list1),search_element_value)
-# condition check and index number print
-if result == -1:
-    print("Element is not present in list :",search_element_value)
+            index_last = index_mid - 1
+    return -1
+def selection_sort(array_number, size_of_array):
+    for j in range(0, size_of_array):
+        index_min = j
+        for k in range(j+1, size_of_array):
+            if array_number[k] < number_array[index_min]:
+                index_min = k
+        if index_min != j:
+            temp = array_number[j]
+            array_number[j] = array_number[index_min]
+            array_number[index_min] = temp
+
+array_size = int(input("Enter array size :"))
+number_array = []
+for i in range(array_size):
+    number_array.append(int(input(f"Element # {i+1} : ")))
+
+selection_sort(number_array, array_size)
+# print(number_array)
+search_number = int(input("Enter search number :"))
+search_number_index = binary_search(number_array, array_size, search_number)
+if search_number_index == -1:
+    print(f"{search_number} is not find array.")
 else:
-    print("Element is present at index =",result)
+    print(f"{search_number} index number {search_number_index}")
