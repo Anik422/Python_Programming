@@ -1,3 +1,15 @@
-name = input('What is your name? ')
-favorite_color = input('What is your favorite color? ')
-print(name+" likes "+favorite_color)
+def fizz_buzz(input):
+    if (input % 3 == 0) and (input % 5 == 0):
+        return "FizzBuzz"
+    if input % 3 == 0:
+        return "Fizz"
+    if input % 5 == 0:
+        return "Buzz"
+    return input
+
+
+print(fizz_buzz(int(input())))
+
+
+        
+    
